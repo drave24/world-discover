@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Discover | Explore the World</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fa;color:#183044}
+header{background:#103448;color:white;padding:20px;text-align:center}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0;color:#d6e6ed}
+.hero{padding:42px 20px;text-align:center;background:linear-gradient(135deg,#174d61,#102c43);color:white}
+.hero h2{font-size:32px;margin:0 0 12px}
+.hero p{line-height:1.6}
+.search{width:100%;max-width:480px;padding:15px;border:0;border-radius:8px;font-size:16px;margin-top:15px}
+.container{max-width:1000px;margin:auto;padding:22px 16px}
+h2.section{font-size:23px}
+.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.category{background:white;padding:18px;border-radius:12px;text-align:center;font-weight:bold;box-shadow:0 2px 9px #0000000c}
+.places{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.place{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 9px #00000012}
+.place img{width:100%;height:125px;object-fit:cover}
+.place div{padding:12px}
+.place p{font-size:13px;color:#657581}
+.join{background:#e5f1f4;padding:28px 20px;text-align:center;border-radius:14px;margin-top:25px}
+.btn{display:inline-block;background:#e69b39;color:#172e3b;padding:13px 20px;border:0;border-radius:8px;font-weight:bold;text-decoration:none;cursor:pointer}
+footer{text-align:center;background:#103448;color:white;padding:22px;margin-top:25px;font-size:13px}
+@media(min-width:650px){.categories{grid-template-columns:repeat(4,1fr)}.places{grid-template-columns:repeat(4,1fr)}.place img{height:160px}}
+</style>
+</head>
+<body>
+<header>
+<h1>🌍 WORLD DISCOVER</h1>
+<p>Discover the world. Promote your business.</p>
+</header>
+<section class="hero">
+<h2>Discover Beautiful Places</h2>
+<p>Explore hotels, restaurants, beaches and amazing destinations around the world.</p>
+<input class="search" id="search" placeholder="Search a place or destination..." oninput="searchPlaces()">
+</section>
+<main class="container">
+<h2 class="section">Explore Categories</h2>
+<div class="categories">
+<div class="category">🏨 Hotels & Resorts</div>
+<div class="category">🍽️ Restaurants</div>
+<div class="category">🏝️ Beaches</div>
+<div class="category">📍 Tourist Attractions</div>
+</div>
+<h2 class="section">Discover the World</h2>
+<div class="places" id="places">
+<div class="place"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500" alt="Hotel"><div><b>Beautiful Hotels</b><p>Find your next stay.</p></div></div>
+<div class="place"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500" alt="Restaurant"><div><b>Wonderful Restaurants</b><p>Discover great food.</p></div></div>
+<div class="place"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500" alt="Beach"><div><b>Dream Beaches</b><p>Explore paradise.</p></div></div>
+<div class="place"><img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500" alt="Tourism"><div><b>Tourist Destinations</b><p>Explore new adventures.</p></div></div>
+</div>
+<section class="join">
+<h2>Promote Your Business Worldwide!</h2>
+<p>Showcase your hotel, restaurant, beach or tourist destination.</p>
+<p><b>🎉 Special Launch Offer: 15 Days Free Promotion!</b></p>
+<a class="btn" href="mailto:hello@worlddiscover.example?subject=World%20Discover%20Business%20Registration">Join as a Business</a>
+<p style="font-size:12px;color:#657581">Business registration and uploads are coming soon.</p>
+</section>
+</main>
+<footer>
+<p>🌍 WORLD DISCOVER</p>
+<p>Discover More. Explore Everywhere.</p>
+<p>© 2026 World Discover — Our journey begins here.</p>
+</footer>
+<script>
+function searchPlaces(){
+const q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.place').forEach(p=>{
+p.style.display=p.innerText.toLowerCase().includes(q)?'block':'none';
+});
+}
+</script>
+</body>
+</html>
