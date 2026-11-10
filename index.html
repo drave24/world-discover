@@ -3,31 +3,38 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World Discover | Explore the World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Discover - Explore the World</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fa;color:#183044}
-header{background:#103448;color:white;padding:20px;text-align:center}
-header h1{margin:0;font-size:27px}
-header p{margin:8px 0 0;color:#d6e6ed}
-.hero{padding:42px 20px;text-align:center;background:linear-gradient(135deg,#174d61,#102c43);color:white}
-.hero h2{font-size:32px;margin:0 0 12px}
+header{background:#103448;color:white;padding:18px;text-align:center}
+header h1{margin:0;font-size:25px}
+header p{margin:7px 0 0;color:#d5e5ed}
+.hero{padding:45px 18px;text-align:center;background:linear-gradient(135deg,#164b60,#102b43);color:white}
+.hero h2{font-size:31px;margin:0 0 12px}
 .hero p{line-height:1.6}
-.search{width:100%;max-width:480px;padding:15px;border:0;border-radius:8px;font-size:16px;margin-top:15px}
-.container{max-width:1000px;margin:auto;padding:22px 16px}
-h2.section{font-size:23px}
-.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.category{background:white;padding:18px;border-radius:12px;text-align:center;font-weight:bold;box-shadow:0 2px 9px #0000000c}
-.places{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.place{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 9px #00000012}
-.place img{width:100%;height:125px;object-fit:cover}
-.place div{padding:12px}
-.place p{font-size:13px;color:#657581}
-.join{background:#e5f1f4;padding:28px 20px;text-align:center;border-radius:14px;margin-top:25px}
-.btn{display:inline-block;background:#e69b39;color:#172e3b;padding:13px 20px;border:0;border-radius:8px;font-weight:bold;text-decoration:none;cursor:pointer}
-footer{text-align:center;background:#103448;color:white;padding:22px;margin-top:25px;font-size:13px}
-@media(min-width:650px){.categories{grid-template-columns:repeat(4,1fr)}.places{grid-template-columns:repeat(4,1fr)}.place img{height:160px}}
+.search{width:100%;max-width:500px;padding:15px;border:0;border-radius:9px;font-size:16px;margin:15px 0}
+.container{max-width:1050px;margin:auto;padding:22px 15px}
+.section-title{margin:12px 0 17px;font-size:23px}
+.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.category{background:white;padding:17px 8px;text-align:center;border-radius:12px;font-weight:bold;box-shadow:0 2px 8px #0000000c}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #00000012}
+.card img{width:100%;height:135px;object-fit:cover;display:block}
+.info{padding:12px}
+.info h3{font-size:16px;margin:0 0 7px}
+.info p{font-size:13px;color:#687986;margin:5px 0 12px}
+.map{display:inline-block;background:#e5f2ed;color:#176b48;padding:9px 10px;border-radius:7px;text-decoration:none;font-size:12px;font-weight:bold}
+.tag{font-size:10px;background:#e9f1f6;color:#23556c;padding:5px 8px;border-radius:20px}
+.promo{background:#e4f0f3;padding:28px 18px;text-align:center;border-radius:14px;margin-top:28px}
+.btn{display:inline-block;background:#e6a13d;color:#183044;text-decoration:none;padding:13px 19px;border-radius:8px;font-weight:bold}
+footer{background:#103448;color:white;text-align:center;padding:24px;margin-top:28px;font-size:13px}
+@media(min-width:650px){
+.categories{grid-template-columns:repeat(4,1fr)}
+.grid{grid-template-columns:repeat(4,1fr)}
+.card img{height:165px}
+}
 </style>
 </head>
 <body>
@@ -35,45 +42,128 @@ footer{text-align:center;background:#103448;color:white;padding:22px;margin-top:
 <h1>🌍 WORLD DISCOVER</h1>
 <p>Discover the world. Promote your business.</p>
 </header>
+
 <section class="hero">
-<h2>Discover Beautiful Places</h2>
-<p>Explore hotels, restaurants, beaches and amazing destinations around the world.</p>
-<input class="search" id="search" placeholder="Search a place or destination..." oninput="searchPlaces()">
+<h2>The World Is Waiting For You!</h2>
+<p>Discover beautiful destinations, amazing hotels, restaurants and hidden places around the world.</p>
+<input class="search" id="search" placeholder="🔎 Search a country, city or destination..." oninput="filterPlaces()">
 </section>
+
 <main class="container">
-<h2 class="section">Explore Categories</h2>
+<h2 class="section-title">Explore Categories</h2>
 <div class="categories">
 <div class="category">🏨 Hotels & Resorts</div>
 <div class="category">🍽️ Restaurants</div>
 <div class="category">🏝️ Beaches</div>
 <div class="category">📍 Tourist Attractions</div>
 </div>
-<h2 class="section">Discover the World</h2>
-<div class="places" id="places">
-<div class="place"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500" alt="Hotel"><div><b>Beautiful Hotels</b><p>Find your next stay.</p></div></div>
-<div class="place"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500" alt="Restaurant"><div><b>Wonderful Restaurants</b><p>Discover great food.</p></div></div>
-<div class="place"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500" alt="Beach"><div><b>Dream Beaches</b><p>Explore paradise.</p></div></div>
-<div class="place"><img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500" alt="Tourism"><div><b>Tourist Destinations</b><p>Explore new adventures.</p></div></div>
+
+<h2 class="section-title">🌎 Discover Beautiful Destinations</h2>
+<div class="grid" id="places">
+
+<div class="card" data-search="el nido palawan philippines beach island">
+<img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600" alt="Tropical beach">
+<div class="info">
+<h3>El Nido, Palawan</h3>
+<span class="tag">Philippines</span>
+<p>Beautiful islands and turquoise lagoons.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=El+Nido+Palawan+Philippines">📍 Open Google Maps</a>
+</div></div>
+
+<div class="card" data-search="maldives island resort beach">
+<img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600" alt="Maldives">
+<div class="info">
+<h3>Maldives</h3>
+<span class="tag">Maldives</span>
+<p>Dream islands and luxury resorts.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Maldives">📍 Open Google Maps</a>
+</div></div>
+
+<div class="card" data-search="dubai burj khalifa united arab emirates city">
+<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600" alt="Dubai">
+<div class="info">
+<h3>Dubai</h3>
+<span class="tag">United Arab Emirates</span>
+<p>Discover incredible city attractions.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Burj+Khalifa+Dubai+UAE">📍 Open Google Maps</a>
+</div></div>
+
+<div class="card" data-search="bali indonesia beach tropical">
+<img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600" alt="Bali">
+<div class="info">
+<h3>Bali</h3>
+<span class="tag">Indonesia</span>
+<p>Explore tropical beauty and culture.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bali+Indonesia">📍 Open Google Maps</a>
+</div></div>
+
+<div class="card" data-search="paris france eiffel tower">
+<img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600" alt="Paris">
+<div class="info">
+<h3>Paris</h3>
+<span class="tag">France</span>
+<p>Discover beautiful city landmarks.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Eiffel+Tower+Paris+France">📍 Open Google Maps</a>
+</div></div>
+
+<div class="card" data-search="switzerland mountains lake nature">
+<img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600" alt="Switzerland">
+<div class="info">
+<h3>Swiss Alps</h3>
+<span class="tag">Switzerland</span>
+<p>Mountains, lakes and amazing views.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Swiss+Alps+Switzerland">📍 Open Google Maps</a>
+</div></div>
+
+<div class="card" data-search="tokyo japan city tourism">
+<img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600" alt="Tokyo">
+<div class="info">
+<h3>Tokyo</h3>
+<span class="tag">Japan</span>
+<p>Experience Japanese city life.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tokyo+Japan">📍 Open Google Maps</a>
+</div></div>
+
+<div class="card" data-search="rome italy colosseum historic">
+<img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600" alt="Rome">
+<div class="info">
+<h3>Rome</h3>
+<span class="tag">Italy</span>
+<p>Explore history and architecture.</p>
+<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Colosseum+Rome+Italy">📍 Open Google Maps</a>
+</div></div>
+
 </div>
-<section class="join">
-<h2>Promote Your Business Worldwide!</h2>
-<p>Showcase your hotel, restaurant, beach or tourist destination.</p>
-<p><b>🎉 Special Launch Offer: 15 Days Free Promotion!</b></p>
-<a class="btn" href="mailto:hello@worlddiscover.example?subject=World%20Discover%20Business%20Registration">Join as a Business</a>
+
+<p id="noResults" style="display:none;text-align:center;color:#657581">No destinations found. Try another search.</p>
+
+<section class="promo">
+<h2>🏨 Promote Your Business Worldwide!</h2>
+<p>Hotels, restaurants, resorts and tourist attractions can showcase their photos and videos to the world.</p>
+<h3>🎉 15 DAYS FREE PROMOTION!</h3>
+<a class="btn" href="mailto:hello@worlddiscover.example?subject=Business%20Promotion">Promote Your Business</a>
 <p style="font-size:12px;color:#657581">Business registration and uploads are coming soon.</p>
 </section>
 </main>
+
 <footer>
-<p>🌍 WORLD DISCOVER</p>
+<h3>🌍 WORLD DISCOVER</h3>
 <p>Discover More. Explore Everywhere.</p>
-<p>© 2026 World Discover — Our journey begins here.</p>
+<p>Connecting people and beautiful places around the world.</p>
+<p>© 2026 World Discover</p>
 </footer>
+
 <script>
-function searchPlaces(){
-const q=document.getElementById('search').value.toLowerCase();
-document.querySelectorAll('.place').forEach(p=>{
-p.style.display=p.innerText.toLowerCase().includes(q)?'block':'none';
+function filterPlaces(){
+const query=document.getElementById('search').value.toLowerCase();
+let visible=0;
+document.querySelectorAll('.card').forEach(card=>{
+const match=card.innerText.toLowerCase().includes(query) ||
+(card.dataset.search || '').includes(query);
+card.style.display=match?'block':'none';
+if(match) visible++;
 });
+document.getElementById('noResults').style.display=visible?'none':'block';
 }
 </script>
 </body>
