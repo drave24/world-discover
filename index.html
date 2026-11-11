@@ -224,6 +224,48 @@ document.getElementById('noResults').style.display=visible?'none':'block';
 
   const message = document.getElementById("wd-message");
 
+const countrySelect = document.getElementById("wd-country");
+const cityInput = document.getElementById("wd-city");
+const cityOptions = document.getElementById("wd-city-options");
+
+let countryData = [];
+
+fetch("https://countriesnow.space/api/v0.1/countries")
+  .then(response => response.json())
+  .then(result => {
+    if (result.error) throw new Error("Country list unavailable");
+
+    countryData = result.data || [];
+    countrySelect.innerHTML = '<option value="">Select country</option>';
+
+    countryData.forEach(item => {
+      const option = document.createElement("option");
+      option.value = item.country;
+      option.textContent = item.country;
+      countrySelect.appendChild(option);
+    });
+  })
+  .catch(() => {
+    countrySelect.innerHTML = '<option value="">Country list unavailable — refresh and try again</option>';
+  });
+
+countrySelect.addEventListener("change", () => {
+  cityInput.value = "";
+  cityOptions.innerHTML = "";
+
+  const selected = countryData.find(
+    item => item.country === countrySelect.value
+  );
+
+  if (selected && Array.isArray(selected.cities)) {
+    selected.cities.forEach(city => {
+      const option = document.createElement("option");
+      option.value = city;
+      cityOptions.appendChild(option);
+    });
+  }
+});
+
   document.getElementById("wd-register").onclick = async function () {
     const name = document.getElementById("wd-name").value.trim();
     const email = document.getElementById("wd-email").value.trim();
