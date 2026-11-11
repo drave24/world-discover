@@ -38,6 +38,7 @@ footer{background:#103448;color:white;text-align:center;padding:24px;margin-top:
 </style>
 </head>
 <body>
+
 <header>
 <h1>🌍 WORLD DISCOVER</h1>
 <p>Discover the world. Promote your business.</p>
@@ -141,8 +142,8 @@ footer{background:#103448;color:white;text-align:center;padding:24px;margin-top:
 <h2>🏨 Promote Your Business Worldwide!</h2>
 <p>Hotels, restaurants, resorts and tourist attractions can showcase their photos and videos to the world.</p>
 <h3>🎉 15 DAYS FREE PROMOTION!</h3>
-<a class="btn" href="mailto:hello@worlddiscover.example?subject=Business%20Promotion">Promote Your Business</a>
-<p style="font-size:12px;color:#657581">Business registration and uploads are coming soon.</p>
+<a class="btn" href="#business-account">Promote Your Business</a>
+<p style="font-size:12px;color:#657581">Create your business account below.</p>
 </section>
 </main>
 
@@ -167,82 +168,66 @@ document.getElementById('noResults').style.display=visible?'none':'block';
 }
 </script>
 
-<section id="business-account" style="max-width:600px;margin:40px auto;padding:24px;background:#f5f7fa;border-radius:14px;color:#222;">
-  <h2>Promote Your Business Worldwide</h2>
-  <p>Create your free World Discover business account.</p>
+<section id="business-account" style="max-width:600px;margin:40px auto;padding:24px;background:#fff;border-radius:14px;color:#222;">
+<h2>Promote Your Business Worldwide</h2>
+<p>Create your free World Discover business account.</p>
 
-  <label>Business name</label>
-  <input id="wd-name" type="text" placeholder="Hotel, restaurant or attraction" style="width:100%;padding:12px;margin:8px 0;">
+<label>Business name</label>
+<input id="wd-name" type="text" placeholder="Hotel, restaurant or attraction" style="width:100%;padding:12px;margin:8px 0;">
 
-  <label>Email address</label>
-  <input id="wd-email" type="email" placeholder="Your business email" style="width:100%;padding:12px;margin:8px 0;">
+<label>Email address</label>
+<input id="wd-email" type="email" placeholder="Your business email" style="width:100%;padding:12px;margin:8px 0;">
 
-  <label>Password</label>
-  <input id="wd-password" type="password" placeholder="At least 6 characters" style="width:100%;padding:12px;margin:8px 0;">
-
-  
+<label>Password</label>
+<input id="wd-password" type="password" placeholder="At least 6 characters" style="width:100%;padding:12px;margin:8px 0;">
 
 <label>Country</label>
 <select id="wd-country" style="width:100%;padding:12px;margin:8px 0;">
-  <option value="">Loading countries...</option>
+<option value="">Loading countries...</option>
 </select>
 
 <label>City</label>
-<input id="wd-city" type="text" list="wd-city-options"
-  placeholder="Choose or type your city"
-  style="width:100%;padding:12px;margin:8px 0;">
+<input id="wd-city" type="text" list="wd-city-options" placeholder="Choose or type your city" style="width:100%;padding:12px;margin:8px 0;">
 <datalist id="wd-city-options"></datalist>
 
-  <label>Business category</label>
-  <select id="wd-category" style="width:100%;padding:12px;margin:8px 0;">
-    <option>Hotel & Resort</option>
-    <option>Restaurant & Cafe</option>
-    <option>Beach</option>
-    <option>Tourist Attraction</option>
-    <option>Travel & Tourism</option>
-    <option>Other</option>
-  </select>
-
-  <button id="wd-register" style="width:100%;padding:14px;margin-top:12px;background:#087b65;color:white;border:0;border-radius:8px;font-weight:bold;">
-    Register Business
-  </button>
-
-  <button id="wd-login" style="width:100%;padding:14px;margin-top:10px;background:#24364b;color:white;border:0;border-radius:8px;">
-    Login
-  </button>
-
-  <p id="wd-message" style="margin-top:14px;"></p>
+<label>Business category</label>
+<select id="wd-category" style="width:100%;padding:12px;margin:8px 0;">
+<option>Hotel & Resort</option>
+<option>Restaurant & Cafe</option>
+<option>Beach</option>
+<option>Tourist Attraction</option>
+<option>Travel & Tourism</option>
+<option>Other</option>
+</select>
 
 <label>Full Business Address</label>
-<input id="wd-address" type="text"
-  placeholder="Street, building, area"
-  style="width:100%;padding:12px;margin:8px 0;">
+<input id="wd-address" type="text" placeholder="Street, building, area" style="width:100%;padding:12px;margin:8px 0;">
 
 <label>Phone / WhatsApp Number</label>
-<input id="wd-phone" type="tel"
-  placeholder="+971..."
-  style="width:100%;padding:12px;margin:8px 0;">
+<input id="wd-phone" type="tel" placeholder="+971..." style="width:100%;padding:12px;margin:8px 0;">
 
 <label>Business Website</label>
-<input id="wd-website" type="url"
-  placeholder="https://example.com"
-  style="width:100%;padding:12px;margin:8px 0;">
+<input id="wd-website" type="url" placeholder="https://example.com" style="width:100%;padding:12px;margin:8px 0;">
 
 <label>Google Maps Link</label>
-<input id="wd-maps" type="url"
-  placeholder="Paste your Google Maps link"
-  style="width:100%;padding:12px;margin:8px 0;">
+<input id="wd-maps" type="url" placeholder="Paste your Google Maps link" style="width:100%;padding:12px;margin:8px 0;">
 
 <label>About Your Business</label>
-<textarea id="wd-description"
-  placeholder="Tell tourists about your business..."
-  style="width:100%;padding:12px;margin:8px 0;min-height:100px;"></textarea>
+<textarea id="wd-description" placeholder="Tell tourists about your business..." style="width:100%;padding:12px;margin:8px 0;min-height:100px;"></textarea>
+
+<button id="wd-register" type="button" style="width:100%;padding:14px;margin-top:12px;background:#087b65;color:white;border:0;border-radius:8px;font-weight:bold;">
+Register Business
+</button>
+
+<button id="wd-login" type="button" style="width:100%;padding:14px;margin-top:10px;background:#24364b;color:white;border:0;border-radius:8px;">
+Login
+</button>
+
+<p id="wd-message" style="margin-top:14px;"></p>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-
-
 (function () {
   const client = window.supabase.createClient(
     "https://eddijotbbvixgnzdwqrp.supabase.co",
@@ -250,7 +235,6 @@ document.getElementById('noResults').style.display=visible?'none':'block';
   );
 
   const message = document.getElementById("wd-message");
-
   const countrySelect = document.getElementById("wd-country");
   const cityInput = document.getElementById("wd-city");
   const cityOptions = document.getElementById("wd-city-options");
@@ -261,10 +245,8 @@ document.getElementById('noResults').style.display=visible?'none':'block';
     .then(response => response.json())
     .then(result => {
       if (result.error) throw new Error("Country list unavailable");
-
       countryData = result.data || [];
-      countrySelect.innerHTML =
-        '<option value="">Select country</option>';
+      countrySelect.innerHTML = '<option value="">Select country</option>';
 
       countryData.forEach(item => {
         const option = document.createElement("option");
@@ -274,8 +256,7 @@ document.getElementById('noResults').style.display=visible?'none':'block';
       });
     })
     .catch(() => {
-      countrySelect.innerHTML =
-        '<option value="">Country list unavailable</option>';
+      countrySelect.innerHTML = '<option value="">Country list unavailable</option>';
     });
 
   countrySelect.addEventListener("change", () => {
@@ -302,6 +283,7 @@ document.getElementById('noResults').style.display=visible?'none':'block';
       category: document.getElementById("wd-category").value,
       country: countrySelect.value,
       city: cityInput.value.trim(),
+      contact_email: document.getElementById("wd-email").value.trim(),
       address: document.getElementById("wd-address").value.trim(),
       contact_phone: document.getElementById("wd-phone").value.trim(),
       website: document.getElementById("wd-website").value.trim(),
@@ -310,10 +292,11 @@ document.getElementById('noResults').style.display=visible?'none':'block';
     };
 
     if (!profile.business_name || !profile.country || !profile.city) {
-      message.textContent =
-        "Please enter your business name, country and city.";
+      message.textContent = "Please enter your business name, country and city.";
       return;
     }
+
+    message.textContent = "Saving your business profile...";
 
     const { data: existing, error: findError } = await client
       .from("businesses")
@@ -322,7 +305,7 @@ document.getElementById('noResults').style.display=visible?'none':'block';
       .limit(1);
 
     if (findError) {
-      message.textContent = findError.message;
+      message.textContent = "Could not check your profile: " + findError.message;
       return;
     }
 
@@ -340,11 +323,9 @@ document.getElementById('noResults').style.display=visible?'none':'block';
     }
 
     if (result.error) {
-      message.textContent =
-        "Profile could not be saved: " + result.error.message;
+      message.textContent = "Profile could not be saved: " + result.error.message;
     } else {
-      message.textContent =
-        "Success! Your World Discover business profile has been saved.";
+      message.textContent = "Success! Your World Discover business profile has been saved.";
     }
   }
 
@@ -352,10 +333,8 @@ document.getElementById('noResults').style.display=visible?'none':'block';
     const email = document.getElementById("wd-email").value.trim();
     const password = document.getElementById("wd-password").value;
 
-    if (!document.getElementById("wd-name").value.trim() ||
-        !email || password.length < 6) {
-      message.textContent =
-        "Enter your business name, email and password of at least 6 characters.";
+    if (!document.getElementById("wd-name").value.trim() || !email || password.length < 6) {
+      message.textContent = "Enter your business name, email and password of at least 6 characters.";
       return;
     }
 
@@ -372,8 +351,7 @@ document.getElementById('noResults').style.display=visible?'none':'block';
     }
 
     if (!data.session) {
-      message.textContent =
-        "Account created! Confirm your email, then log in. Re-enter your business details before logging in to save your profile.";
+      message.textContent = "Account created! Confirm your email, then log in. Re-enter your business details before logging in to save your profile.";
       return;
     }
 
@@ -383,6 +361,11 @@ document.getElementById('noResults').style.display=visible?'none':'block';
   document.getElementById("wd-login").onclick = async function () {
     const email = document.getElementById("wd-email").value.trim();
     const password = document.getElementById("wd-password").value;
+
+    if (!email || !password) {
+      message.textContent = "Enter your registered email and password.";
+      return;
+    }
 
     message.textContent = "Logging in...";
 
@@ -399,110 +382,7 @@ document.getElementById('noResults').style.display=visible?'none':'block';
     await saveBusinessProfile(data.user);
   };
 })();
-
-  const message = document.getElementById("wd-message");
-
-const countrySelect = document.getElementById("wd-country");
-const cityInput = document.getElementById("wd-city");
-const cityOptions = document.getElementById("wd-city-options");
-
-let countryData = [];
-
-fetch("https://countriesnow.space/api/v0.1/countries")
-  .then(response => response.json())
-  .then(result => {
-    if (result.error) throw new Error("Country list unavailable");
-
-    countryData = result.data || [];
-    countrySelect.innerHTML = '<option value="">Select country</option>';
-
-    countryData.forEach(item => {
-      const option = document.createElement("option");
-      option.value = item.country;
-      option.textContent = item.country;
-      countrySelect.appendChild(option);
-    });
-  })
-  .catch(() => {
-    countrySelect.innerHTML = '<option value="">Country list unavailable — refresh and try again</option>';
-  });
-
-countrySelect.addEventListener("change", () => {
-  cityInput.value = "";
-  cityOptions.innerHTML = "";
-
-  const selected = countryData.find(
-    item => item.country === countrySelect.value
-  );
-
-  if (selected && Array.isArray(selected.cities)) {
-    selected.cities.forEach(city => {
-      const option = document.createElement("option");
-      option.value = city;
-      cityOptions.appendChild(option);
-    });
-  }
-});
-
-  document.getElementById("wd-register").onclick = async function () {
-    const name = document.getElementById("wd-name").value.trim();
-    const email = document.getElementById("wd-email").value.trim();
-    const password = document.getElementById("wd-password").value;
-    const country = document.getElementById("wd-country").value.trim();
-    const city = document.getElementById("wd-city").value.trim();
-    const category = document.getElementById("wd-category").value;
-
-    if (!name || !email || password.length < 6) {
-      message.textContent = "Enter your business name, email and a password of at least 6 characters.";
-      return;
-    }
-
-    message.textContent = "Creating your account...";
-
-    const { data, error } = await client.auth.signUp({
-      email,
-      password
-    });
-
-    if (error) {
-      message.textContent = error.message;
-      return;
-    }
-
-    if (!data.session) {
-      message.textContent = "Account created. Check your email to confirm your account, then log in. Business profile submission will follow.";
-      return;
-    }
-
-    const { error: saveError } = await client.from("businesses").insert({
-      owner_id: data.user.id,
-      business_name: name,
-      category,
-      country,
-      city
-    });
-
-    message.textContent = saveError
-      ? "Account created, but profile could not be saved: " + saveError.message
-      : "Welcome! Your business account and profile have been created.";
-  };
-
-  document.getElementById("wd-login").onclick = async function () {
-    const email = document.getElementById("wd-email").value.trim();
-    const password = document.getElementById("wd-password").value;
-
-    message.textContent = "Logging in...";
-
-    const { error } = await client.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    message.textContent = error
-      ? error.message
-      : "Login successful! Welcome to World Discover.";
-  };
-})();
 </script>
+
 </body>
 </html>
