@@ -212,15 +212,193 @@ document.getElementById('noResults').style.display=visible?'none':'block';
   </button>
 
   <p id="wd-message" style="margin-top:14px;"></p>
+
+<label>Full Business Address</label>
+<input id="wd-address" type="text"
+  placeholder="Street, building, area"
+  style="width:100%;padding:12px;margin:8px 0;">
+
+<label>Phone / WhatsApp Number</label>
+<input id="wd-phone" type="tel"
+  placeholder="+971..."
+  style="width:100%;padding:12px;margin:8px 0;">
+
+<label>Business Website</label>
+<input id="wd-website" type="url"
+  placeholder="https://example.com"
+  style="width:100%;padding:12px;margin:8px 0;">
+
+<label>Google Maps Link</label>
+<input id="wd-maps" type="url"
+  placeholder="Paste your Google Maps link"
+  style="width:100%;padding:12px;margin:8px 0;">
+
+<label>About Your Business</label>
+<textarea id="wd-description"
+  placeholder="Tell tourists about your business..."
+  style="width:100%;padding:12px;margin:8px 0;min-height:100px;"></textarea>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+
+
 (function () {
   const client = window.supabase.createClient(
     "https://eddijotbbvixgnzdwqrp.supabase.co",
-    "sb_publishable_w0puv5U9t4S0T7L9vI0Gog_9hyVEfDq"
+    "YOUR_EXISTING_SB_PUBLISHABLE_KEY"
   );
+
+  const message = document.getElementById("wd-message");
+
+  const countrySelect = document.getElementById("wd-country");
+  const cityInput = document.getElementById("wd-city");
+  const cityOptions = document.getElementById("wd-city-options");
+
+  let countryData = [];
+
+  fetch("https://countriesnow.space/api/v0.1/countries")
+    .then(response => response.json())
+    .then(result => {
+      if (result.error) throw new Error("Country list unavailable");
+
+      countryData = result.data || [];
+      countrySelect.innerHTML =
+        '<option value="">Select country</option>';
+
+      countryData.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.country;
+        option.textContent = item.country;
+        countrySelect.appendChild(option);
+      });
+    })
+    .catch(() => {
+      countrySelect.innerHTML =
+        '<option value="">Country list unavailable</option>';
+    });
+
+  countrySelect.addEventListener("change", () => {
+    cityInput.value = "";
+    cityOptions.innerHTML = "";
+
+    const selected = countryData.find(
+      item => item.country === countrySelect.value
+    );
+
+    if (selected && Array.isArray(selected.cities)) {
+      selected.cities.forEach(city => {
+        const option = document.createElement("option");
+        option.value = city;
+        cityOptions.appendChild(option);
+      });
+    }
+  });
+
+  async function saveBusinessProfile(user) {
+    const profile = {
+      owner_id: user.id,
+      business_name: document.getElementById("wd-name").value.trim(),
+      category: document.getElementById("wd-category").value,
+      country: countrySelect.value,
+      city: cityInput.value.trim(),
+      address: document.getElementById("wd-address").value.trim(),
+      contact_phone: document.getElementById("wd-phone").value.trim(),
+      website: document.getElementById("wd-website").value.trim(),
+      google_maps_url: document.getElementById("wd-maps").value.trim(),
+      description: document.getElementById("wd-description").value.trim()
+    };
+
+    if (!profile.business_name || !profile.country || !profile.city) {
+      message.textContent =
+        "Please enter your business name, country and city.";
+      return;
+    }
+
+    const { data: existing, error: findError } = await client
+      .from("businesses")
+      .select("id")
+      .eq("owner_id", user.id)
+      .limit(1);
+
+    if (findError) {
+      message.textContent = findError.message;
+      return;
+    }
+
+    let result;
+
+    if (existing && existing.length > 0) {
+      result = await client
+        .from("businesses")
+        .update(profile)
+        .eq("id", existing[0].id);
+    } else {
+      result = await client
+        .from("businesses")
+        .insert(profile);
+    }
+
+    if (result.error) {
+      message.textContent =
+        "Profile could not be saved: " + result.error.message;
+    } else {
+      message.textContent =
+        "Success! Your World Discover business profile has been saved.";
+    }
+  }
+
+  document.getElementById("wd-register").onclick = async function () {
+    const email = document.getElementById("wd-email").value.trim();
+    const password = document.getElementById("wd-password").value;
+
+    if (!document.getElementById("wd-name").value.trim() ||
+        !email || password.length < 6) {
+      message.textContent =
+        "Enter your business name, email and password of at least 6 characters.";
+      return;
+    }
+
+    message.textContent = "Creating your account...";
+
+    const { data, error } = await client.auth.signUp({
+      email,
+      password
+    });
+
+    if (error) {
+      message.textContent = error.message;
+      return;
+    }
+
+    if (!data.session) {
+      message.textContent =
+        "Account created! Confirm your email, then log in. Re-enter your business details before logging in to save your profile.";
+      return;
+    }
+
+    await saveBusinessProfile(data.user);
+  };
+
+  document.getElementById("wd-login").onclick = async function () {
+    const email = document.getElementById("wd-email").value.trim();
+    const password = document.getElementById("wd-password").value;
+
+    message.textContent = "Logging in...";
+
+    const { data, error } = await client.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      message.textContent = error.message;
+      return;
+    }
+
+    await saveBusinessProfile(data.user);
+  };
+})();
 
   const message = document.getElementById("wd-message");
 
