@@ -180,11 +180,18 @@ document.getElementById('noResults').style.display=visible?'none':'block';
   <label>Password</label>
   <input id="wd-password" type="password" placeholder="At least 6 characters" style="width:100%;padding:12px;margin:8px 0;">
 
-  <label>Country</label>
-  <input id="wd-country" type="text" placeholder="Country" style="width:100%;padding:12px;margin:8px 0;">
+  
 
-  <label>City</label>
-  <input id="wd-city" type="text" placeholder="City" style="width:100%;padding:12px;margin:8px 0;">
+<label>Country</label>
+<select id="wd-country" style="width:100%;padding:12px;margin:8px 0;">
+  <option value="">Loading countries...</option>
+</select>
+
+<label>City</label>
+<input id="wd-city" type="text" list="wd-city-options"
+  placeholder="Choose or type your city"
+  style="width:100%;padding:12px;margin:8px 0;">
+<datalist id="wd-city-options"></datalist>
 
   <label>Business category</label>
   <select id="wd-category" style="width:100%;padding:12px;margin:8px 0;">
